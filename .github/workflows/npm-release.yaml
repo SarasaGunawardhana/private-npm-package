@@ -12,17 +12,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Setup Node.js 14.x
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: 14.x
-      - name: Creating .npmrc
-        run: |
-          cat << EOF > "$HOME/.npmrc"
-            email=sarasafreelancer@gmail.com
-            //verdaccio.amtek.com/:_authToken=$NPM_TOKEN
-          EOF
+          registry-url: 'http://verdaccio.amtek.com'
+      - run: npm publish
         env:
-          NPM_TOKEN: ${{ secrets.NODE_TOKEN }}
-      - run: |
-          cat $HOME/.npmrc
-          npm publish
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_TOKEN }}

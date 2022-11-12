@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Add hosts to /etc/hosts
+        run: |
+            sudo echo "13.236.93.248 verdaccio.amtek.com" | sudo tee -a /etc/hosts
       - name: Setup Node.js 14.x
         uses: actions/setup-node@v3
         with:

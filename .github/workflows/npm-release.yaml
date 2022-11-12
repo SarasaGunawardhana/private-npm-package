@@ -19,7 +19,7 @@ jobs:
         run: |
           cat << EOF > "$HOME/.npmrc"
             email=sarasafreelancer@gmail.com
-            //verdaccio.amtek.com/:_authToken=$NODE_TOKEN
+            //verdaccio.amtek.com/:_authToken=$NPM_TOKEN
           EOF
         env:
           NPM_TOKEN: ${{ secrets.NODE_TOKEN }}
